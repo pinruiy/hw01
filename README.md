@@ -15,4 +15,4 @@ Private Repository for HW assignments of Stat 133 (Spring 2018)
 
 - HW 1
   
-   This is my hw01 assignment. The .rmd file includes the answers of questions in hw01. 
+   This is my hw01 assignment. The .rmd file includes the answers of questions in hw01. # hw01
