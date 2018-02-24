@@ -1,0 +1,195 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fnil\fcharset0 Monaco;
+}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 1. A description of the data:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+    This data set consists of three types of entities: (a) the specification of an auto in terms of various characteristics, (b) its assigned insurance risk rating, (c) its normalized losses in use as compared to other cars.  The second rating corresponds to the degree to which the auto is more risky than its price indicates. Cars are initially assigned a risk factor symbol associated with its price. Then, if it is more risky (or less), this symbol is adjusted by moving it up (or down) the scale. Actuarians call this process "symboling".  A value of +3 indicates that the auto is risky, -3 that it is probably pretty safe.\
+\
+    The third factor is the relative average loss payment per insured vehicle year.  This value is normalized for all autos within a particular size classification (two-door small, station wagons, sports/speciality, etc...), and represents the average loss per car per year.
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 2. The original sources:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+   1) 1985 Model Import Car and Truck Specifications, 1985 Ward's\
+      Automotive Yearbook.\
+   2) Personal Auto Manuals, Insurance Services Office, 160 Water\
+      Street, New York, NY 10038 \
+   3) Insurance Collision Report, Insurance Institute for Highway\
+      Safety, Watergate 600, Washington, DC 20037
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 3. Who collected the data:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+    Jeffrey C. Schlimmer (Jeffrey.Schlimmer@a.gp.cs.cmu.edu)
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 4. When it was collected:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+    19 May 1987
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 5. the description of each variable and measurement units:\
+   
+\f1\fs26 \expnd0\expndtw0\kerning0
+1. symboling:                -3, -2, -1, 0, 1, 2, 3.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+  2. normalized-losses:        continuous from 65 to 256.\
+  3. make:                     alfa-romero, audi, bmw, chevrolet,                               dodge, honda,\
+                               isuzu, jaguar, mazda, mercedes-benz, mercury,\
+                               mitsubishi, nissan, peugot, plymouth, porsche,\
+                               renault, saab, subaru, toyota, volkswagen, volvo\
+  4. fuel-type:                diesel, gas.\
+  5. aspiration:               std, turbo.\
+  6. num-of-doors:             four, two.\
+  7. body-style:               hardtop, wagon, sedan, hatchback,   convertible.\
+  8. drive-wheels:             4wd, fwd, rwd.\
+  9. engine-location:          front, rear.\
+ 10. wheel-base:               continuous from 86.6 120.9.\
+ 11. length:                   continuous from 141.1 to 208.1.\
+ 12. width:                    continuous from 60.3 to 72.3.\
+ 13. height:                   continuous from 47.8 to 59.8.\
+ 14. curb-weight:              continuous from 1488 to 4066.\
+ 15. engine-type:              dohc, dohcv, l, ohc, ohcf, ohcv, rotor.\
+ 16. num-of-cylinders:         eight, five, four, six, three, twelve, two.\
+ 17. engine-size:              continuous from 61 to 326.\
+ 18. fuel-system:              1bbl, 2bbl, 4bbl, idi, mfi, mpfi,   spdi, spfi.\
+ 19. bore:                     continuous from 2.54 to 3.94.\
+ 20. stroke:                   continuous from 2.07 to 4.17.\
+ 21. compression-ratio:        continuous from 7 to 23.\
+ 22. horsepower:               continuous from 48 to 288.\
+ 23. peak-rpm:                 continuous from 4150 to 6600.\
+ 24. city-mpg:                 continuous from 13 to 49.\
+ 25. highway-mpg:              continuous from 16 to 54.\
+ 26. price:                    continuous from 5118 to 45400.
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 6. the class of each variable:\
+      
+\f1\fs26 \expnd0\expndtw0\kerning0
+1. symboling:         
+\f2\fs24 \expnd0\expndtw0\kerning0
+integer
+\f1\fs26 \
+    2. normalized-losses: 
+\f2\fs24 factor
+\f1\fs26 \
+    3. make: 			   
+\f2\fs24 factor
+\f1\fs26 \
+    4. fuel-type: 		   
+\f2\fs24 factor
+\f1\fs26 \
+    5. aspiration: 	   
+\f2\fs24 factor
+\f1\fs26 \
+    6. num-of-doors:      
+\f2\fs24 factor
+\f1\fs26 \
+    7. body-style:        
+\f2\fs24 factor
+\f1\fs26 \
+    8. drive-wheels:      
+\f2\fs24 factor
+\f1\fs26 \
+    9. engine-location:   
+\f2\fs24 factor
+\f1\fs26 \
+    10. wheel-base:       
+\f2\fs24 numeric
+\f1\fs26 \
+    11. length:		   
+\f2\fs24 numeric
+\f1\fs26 \
+    12. width:            
+\f2\fs24 numeric
+\f1\fs26 \
+    13. height:           
+\f2\fs24 numeric
+\f1\fs26 \
+    14. curb-weight:      
+\f2\fs24 integer
+\f1\fs26 \
+    15. engine-type:      
+\f2\fs24 factor
+\f1\fs26 \
+    16. num-of-cylinders: 
+\f2\fs24 factor
+\f1\fs26 \
+    17. engine-size:	   
+\f2\fs24 integer
+\f1\fs26 \
+\pard\pardeftab720\partightenfactor0
+\cf0     18. fuel-system:	   
+\f2\fs24 factor
+\f1\fs26 \
+    19. bore:             
+\f2\fs24 factor
+\f1\fs26 \
+    20. stroke:           
+\f2\fs24 factor
+\f1\fs26           \
+    21. compression-ratio:
+\f2\fs24 numeric
+\f1\fs26    \
+    22. horsepower:       
+\f2\fs24 factor
+\f1\fs26            \
+    23. peak-rpm:         
+\f2\fs24 factor
+\f1\fs26       \
+    24. city-mpg:         
+\f2\fs24 integer
+\f1\fs26      \
+    25. highway-mpg:      
+\f2\fs24 integer
+\f1\fs26             \
+    26. price:            
+\f2\fs24 factor
+\f1\fs26                   
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 7. specify codification values:\
+\pard\pardeftab720
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+   Number of Instances: 205\
+   Number of Attributes: 26 total\
+   -- 15 continuous\
+   -- 1 integer\
+   -- 10 nominal
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 8. special meaning of some characters\
+\pard\pardeftab720
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+Several of the attributes in the database could be used as a\
+"class" attribute.
+\f0\fs36 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 9. what values represent missing values\
+\pard\pardeftab720
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+  Missing Attribute Values: (denoted by "?")\
+  Attribute #:   Number of instances missing a value:\
+   2.             41\
+   6.             2\
+   19.            4\
+   20.            4\
+   22.            2\
+   23.            2\
+   26.            4}

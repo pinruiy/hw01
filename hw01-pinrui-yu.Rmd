@@ -1,0 +1,267 @@
+---
+title: "hw01-pinrui-yu.Rmd"
+author: "Pinrui Yu"
+date: "2/17/2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+2.Data Import(20 pt)
+
+*
+```{r}
+column_names <- c(
+	'symboling',
+	'normalized_losses',
+	'make',
+	'fuel_type',
+	'aspiration',
+	'num_of_doors',
+	'body_style',
+	'drive_wheels',
+	'engine_location',
+	'wheel_base',
+	'length',
+	'width',
+	'height',
+	'curb_weight',
+	'engine_type',
+	'num_of_cylinders',
+	'engine_size',
+	'fuel_system',
+	'bore',
+	'stroke',
+	'compression_ratio',
+	'horsepower',
+	'peak_rpm',
+	'city_mpg',
+	'highway_mpg',
+	'price'
+)
+
+column_types <- c(
+  'real',
+  'real',
+  'character',
+  'character',
+  'character',
+  'character',
+  'character',
+  'character',
+  'character',
+  'real',
+  'real',
+  'real',
+  'real',
+  'integer',
+  'character',
+  'character',
+  'integer',
+  'character',
+  'real',
+  'real',
+  'real',
+  'integer',
+  'integer',
+  'integer',
+  'integer',
+  'integer'
+)
+```
+*
+```{r}
+dat <- read.csv(
+	'import-85.data',
+	col.names = column_names,
+	colClasses = column_types,
+	na.string = "?",
+	sep = ","
+)
+str(dat, vec.len = 1)
+```
+*
+```{r}
+library(readr)
+dat1 <- data.frame(
+read_csv("./imports-85.data",
+col_types = cols(symboling = col_double(),
+normalized.losses = col_character(), 
+make = col_character(), 
+fuel_type = col_character(), 
+aspiration = col_character(), 
+num_of_doors = col_character(), 
+body_style = col_character(), 
+drive_wheel = col_character(), 
+wheel_base = col_double(), 
+length = col_double(), 
+width = col_double(), 
+height = col_double(), 
+curb_weight = col_integer(), 
+engine_type = col_character(), 
+num_of_cylinders = col_character(), 
+engine_size = col_integer(), 
+fuel_system = col_character(), 
+bore = col_double(), 
+stroke = col_double(), 
+compression_ratio = col_double(), 
+horsepower = col_integer(), 
+peak_rpm = col_integer(), 
+city_mpg = col_integer(), 
+highway_mpg = col_integer(), 
+price = col_integer())  )
+  )
+str(dat1)
+```
+
+3.Technical questions about importing data
+
+a. The column name of the import data will be its first line. Because if we use read.csv('import-85.data'), the 'header' will default as 'TRUE', which means the file contains the names of the variables as its first line.
+
+b. The column name of the import data will default as "V1","V2","V3",...,"Vn", where n is the number of columns.
+
+c. Error.
+
+d. The first option is smaller because it will assume all the data type is charactor and every column is a character vector (only one byte per character). However, if it with the specifying data type, the integer uses 4 bytes and real number uses 8 bytes. Then the second option will be bigger in storage.
+
+e. Then all the date type will be character, because it follows one of two rules - that is, if there is a character type vector in the columns, then other columns will turn into a character type vector as well.
+
+4.Practice base plotting
+
+*
+```{r}
+hist(dat$price, col = 'blue')
+```
+*
+```{r}
+boxplot(dat$horsepower, horizontal = TRUE)
+```
+*
+```{r}
+body_style1 <- table(dat$body_style)
+barplot(sort(body_style1, decreasing = TRUE))
+```
+*
+```{r}
+asp_turbo <- subset(dat, dat$aspiration == 'turbo' )
+stars(asp_turbo[,c('wheel_base','length','width','price')])
+```
+
+5. Summaries
+
+a.
+```{r}
+mean(subset(dat$price, dat$fuel_type == 'gas'), na.rm = TRUE)
+mean(subset(dat$price, dat$fuel_type == 'diesel'))
+?mean
+```
+b.
+```{r}
+subset(dat$make, dat$num_of_cylinders == 'twelve')
+```
+c.
+```{r}
+names(which.max(table(dat$make[dat$fuel_type == 'diesel'])))[1]
+```
+d.
+```{r}
+subset(dat$price, dat$horsepower == max(dat$horsepower, na.rm = TRUE))
+```
+e.
+```{r}
+dat$city_mpg[dat$city_mpg <= quantile(dat$city_mpg, prob = 0.1)]
+```
+f.
+```{r}
+dat$highway_mpg[dat$highway_mpg >= quantile(dat$highway_mpg, prob = 0.9)]
+```
+g.
+```{r}
+median(dat[dat$highway_mpg >= quantile(dat$highway_mpg, prob = 0.9), 'price'], na.rm = TRUE)
+```
+
+6. Technical Questions about data frame
+
+a. It will appear error and 'NULL'.
+
+b. 4
+
+c. Because we need a string here, mpg is not a string but "mpg" is a string.
+
+d. YES. A data.frame is a list of vectors, each of the same length, and a list is a type of vector.
+
+e. It converts a data frame to a list and every column becomes the list's element, it also returns every column's name with its values included.
+
+f. data.frame(abc)
+
+7. Correlations of quantitative variables
+
+```{r}
+qdat <- na.omit(data.frame(dat$wheel_base,
+dat$length,
+dat$width,
+dat$height,
+dat$curb_weight,
+dat$engine_size,
+dat$bore,
+dat$stroke,
+dat$compression_ratio,
+dat$horsepower,
+dat$peak_rpm,
+dat$city_mpg,
+dat$highway_mpg,
+dat$price
+))
+
+R <- cor(qdat)
+
+library(corrplot)
+corrplot(R, method = "circle", type = "upper", pch.col = "yellow")
+
+corrplot(R, method = "pie", type = "full", outline = TRUE)
+
+?corrplot
+```
+
+8.Principal Components Analysis
+
+8.1) Run PCA
+
+```{r}
+pca_prcomp <- prcomp(qdat, scale.= TRUE)
+pca_prcomp
+eigenvalues <- pca_prcomp$sdev^2
+eigenvalues
+eigenvalues[1]/sum(eigenvalues)
+sum(eigenvalues[2])/sum(eigenvalues)
+sum(eigenvalues[3])/sum(eigenvalues)
+sum(eigenvalues[1:3])/sum(eigenvalues)
+```
+
+8.2) PCA plot of vehicles, and PCA plot of variables
+
+*
+```{r}
+t<-pca_prcomp$x
+plot(t[,1:2])
+abline(h=0, v=0)
+```
+
+*
+```{r}
+rot<-pca_prcomp$rotation
+plot(rot[,1],rot[,2])
+abline(h=0, v=0)
+```
+
+*
+```{r}
+biplot(pca_prcomp, scale = 0)
+```
+
+*
+If the arrow points to the similiar direction (angle less than 90), the correlation coefficient will be positive, otherwise, if angle ranges in 90-180, the correlation coefficient will be negative.
+
+
